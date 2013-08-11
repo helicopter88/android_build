@@ -47,6 +47,11 @@ endif
 # to simplify the link line.
 OVERRIDE_BUILT_MODULE_PATH := $(TARGET_OUT_INTERMEDIATE_LIBRARIES)
 
+ifeq ($(TARGET_CLANG_BUILD),true)
+ifneq ($(LOCAL_NO_CLANG),true)
+LOCAL_CLANG := true
+endif
+endif
 include $(BUILD_SYSTEM)/dynamic_binary.mk
 
 

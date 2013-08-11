@@ -35,6 +35,12 @@ ifeq ($(strip $(LOCAL_ENABLE_APROF)),true)
   LOCAL_WHOLE_STATIC_LIBRARIES += libaprof_aux
 endif
 
+ifeq ($(TARGET_CLANG_BUILD),true)
+ifneq ($(LOCAL_NO_CLANG),true)
+LOCAL_CLANG := true
+endif
+endif
+
 include $(BUILD_SYSTEM)/dynamic_binary.mk
 
 # Define PRIVATE_ variables from global vars

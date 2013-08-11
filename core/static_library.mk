@@ -25,6 +25,13 @@ ifeq ($(strip $(LOCAL_ENABLE_APROF)),true)
   LOCAL_WHOLE_STATIC_LIBRARIES += libaprof
 endif
 
+ifeq ($(TARGET_CLANG_BUILD),true)
+ifneq ($(LOCAL_NO_CLANG),true)
+LOCAL_CLANG := true
+endif
+endif
+
+
 include $(BUILD_SYSTEM)/binary.mk
 
 ifeq ($(LOCAL_RAW_STATIC_LIBRARY),true)
@@ -38,3 +45,4 @@ endif
 $(LOCAL_BUILT_MODULE): $(built_whole_libraries)
 $(LOCAL_BUILT_MODULE): $(all_objects)
 	$(transform-o-to-static-lib)
+
